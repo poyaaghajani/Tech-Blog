@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/component/my_colors.dart';
-import 'package:tech_blog/view/my_categories.dart';
+import 'package:tech_blog/view/main_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const MyCategories(),
+      home: MainScreen(),
       locale: const Locale("fa", ""),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

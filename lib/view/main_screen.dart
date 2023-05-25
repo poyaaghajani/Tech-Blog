@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:tech_blog/component/lunch_url.dart';
 import 'package:tech_blog/component/my_colors.dart';
+import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/utils/devise_size.dart';
 import 'package:tech_blog/view/home_screen.dart';
 import 'package:tech_blog/view/profile_screen.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class MainScreen extends StatelessWidget {
+  MainScreen({super.key});
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  var selektedScreenIndex = 0;
-  final GlobalKey<ScaffoldState> key = GlobalKey();
+  final RxInt selektedScreenIndex = 0.obs;
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> key = GlobalKey();
+
     var bodyMargin = DeviseSize.getWidth(context) / 11;
     var textTheme = Theme.of(context).textTheme;
 
@@ -57,16 +57,21 @@ class _MainScreenState extends State<MainScreen> {
                 'اشتراک گذاری تک بلاگ',
                 style: textTheme.headlineMedium,
               ),
+              onTap: () async {
+                await Share.share(MySctrings.shareText);
+              },
             ),
             const Divider(
               color: SolidColors.dividerColor,
             ),
             ListTile(
-              title: Text(
-                'تک بلاگ در گیت هاب',
-                style: textTheme.headlineMedium,
-              ),
-            ),
+                title: Text(
+                  'تک بلاگ در گیت هاب',
+                  style: textTheme.headlineMedium,
+                ),
+                onTap: () {
+                  mylaunchUrl(MySctrings.techBlogGitHubUrl);
+                }),
           ],
         ),
       ),
@@ -100,22 +105,20 @@ class _MainScreenState extends State<MainScreen> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: IndexedStack(
-              index: selektedScreenIndex,
-              children: [
-                HomeScreen(textTheme: textTheme, bodyMargin: bodyMargin),
-                ProfileScreen(textTheme: textTheme, bodyMargin: bodyMargin)
-              ],
+            child: Obx(
+              () => IndexedStack(
+                index: selektedScreenIndex.value,
+                children: [
+                  HomeScreen(textTheme: textTheme, bodyMargin: bodyMargin),
+                  ProfileScreen(textTheme: textTheme, bodyMargin: bodyMargin)
+                ],
+              ),
             ),
           ),
           BottomNav(
             bodyMargin: bodyMargin,
             changeScreen: (int value) {
-              setState(
-                () {
-                  selektedScreenIndex = value;
-                },
-              );
+              selektedScreenIndex.value = value;
             },
           ),
         ],
