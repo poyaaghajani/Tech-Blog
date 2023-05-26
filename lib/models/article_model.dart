@@ -1,3 +1,5 @@
+import 'package:tech_blog/component/api_url.dart';
+
 class ArticleModel {
   String id;
   String title;
@@ -23,7 +25,7 @@ class ArticleModel {
     return ArticleModel(
       id: json['id'],
       title: json['title'],
-      image: json['image'],
+      image: ApiUrl.hostDlUrl + json['image'],
       catId: json['cat_id'],
       catname: json['cat_name'],
       author: json['author'],

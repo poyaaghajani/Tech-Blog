@@ -38,6 +38,9 @@ dependencies:
   get: ^4.6.5
   share_plus: ^7.0.1
   url_launcher:
+  dio: ^5.1.2
+  cached_network_image: ^3.2.3
+  shimmer: ^3.0.0
 
 
 
