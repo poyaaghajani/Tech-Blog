@@ -1,9 +1,9 @@
 // ignore_for_file: unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/component/cached_image.dart';
+import 'package:tech_blog/component/loading_widget.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/controller/home_screen_controller.dart';
@@ -81,16 +81,7 @@ class HomeScreen extends StatelessWidget {
                   hotestPodcasts(context),
                 ],
               )
-            : Center(
-                child: SizedBox(
-                  width: DeviseSize.getWidth(context),
-                  height: DeviseSize.getHeight(context),
-                  child: const SpinKitCubeGrid(
-                    size: 35,
-                    color: SolidColors.primaryColor,
-                  ),
-                ),
-              ),
+            : const LoadingWidget(),
       ),
     );
   }

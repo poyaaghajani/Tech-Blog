@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/component/my_colors.dart';
-import 'package:tech_blog/view/main_screen.dart';
+import 'package:tech_blog/view/article_list.dart';
+import 'package:tech_blog/view/main_screen/main_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: ArticleListScreen(),
       locale: const Locale("fa", ""),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
@@ -85,6 +86,12 @@ class MyApp extends StatelessWidget {
         ),
         fontFamily: 'dana',
         textTheme: const TextTheme(
+          titleSmall: TextStyle(
+            fontFamily: 'dana',
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: SolidColors.primaryColor,
+          ),
           displayLarge: TextStyle(
             fontFamily: 'dana',
             fontSize: 16,

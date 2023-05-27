@@ -8,6 +8,7 @@ class ArticleModel {
   String catname;
   String author;
   String view;
+  // bool? isFavorite;
   String createdAt;
 
   ArticleModel({
@@ -18,6 +19,7 @@ class ArticleModel {
     required this.catname,
     required this.author,
     required this.view,
+    // this.isFavorite,
     required this.createdAt,
   });
 
@@ -30,6 +32,7 @@ class ArticleModel {
       catname: json['cat_name'],
       author: json['author'],
       view: json['view'],
+      // isFavorite: json['isFavorite'],
       createdAt: json['created_at'],
     );
   }

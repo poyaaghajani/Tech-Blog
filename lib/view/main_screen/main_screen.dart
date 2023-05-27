@@ -6,8 +6,8 @@ import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/utils/devise_size.dart';
-import 'package:tech_blog/view/home_screen.dart';
-import 'package:tech_blog/view/profile_screen.dart';
+import 'package:tech_blog/view/main_screen/home_screen.dart';
+import 'package:tech_blog/view/main_screen/profile_screen.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
