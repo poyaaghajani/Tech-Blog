@@ -41,6 +41,7 @@ dependencies:
   dio: ^5.1.2
   cached_network_image: ^3.2.3
   flutter_html:
+  get_storage: ^2.1.1
 
 
 dev_dependencies:

@@ -4,4 +4,5 @@ class ApiUrl {
   static const getHomeItems = '${baseUrl}home?command=index';
   static const getArticleList =
       '${baseUrl}article/get.php?command=new&user_id=1';
+  static const postRegister = '${baseUrl}register/action.php';
 }

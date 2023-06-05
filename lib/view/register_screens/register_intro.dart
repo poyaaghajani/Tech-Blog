@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/component/my_strings.dart';
+import 'package:tech_blog/controller/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/utils/devise_size.dart';
-import 'package:tech_blog/view/my_categories.dart';
 
 class RegisterIntro extends StatelessWidget {
-  const RegisterIntro({super.key});
+  RegisterIntro({super.key});
+
+  final registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +85,7 @@ class RegisterIntro extends StatelessWidget {
                     right: 24,
                   ),
                   child: TextField(
+                    controller: registerController.emailController,
                     style: textTheme.headlineSmall,
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
@@ -91,7 +95,8 @@ class RegisterIntro extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    registerController.register();
                     Navigator.pop(context);
                     _showActivateCode(context, textTheme);
                   },
@@ -139,6 +144,7 @@ class RegisterIntro extends StatelessWidget {
                     right: 24,
                   ),
                   child: TextField(
+                    controller: registerController.activeCodeController,
                     style: textTheme.headlineSmall,
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
@@ -148,14 +154,15 @@ class RegisterIntro extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const MyCategories();
-                        },
-                      ),
-                    );
+                  onPressed: () async {
+                    registerController.verify();
+                    // Navigator.of(context).pushReplacement(
+                    //   MaterialPageRoute(
+                    //     builder: (context) {
+                    //       return const MyCategories();
+                    //     },
+                    //   ),
+                    // );
                   },
                   child: const Text('ادامه'),
                 ),

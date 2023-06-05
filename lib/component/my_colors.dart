@@ -48,7 +48,7 @@ class GradientColors {
   ];
   static const List<Color> homePosterCoverGradiant = [
     Color.fromARGB(0, 0, 0, 0),
-    Color.fromARGB(195, 72, 20, 88),
+    Color.fromARGB(195, 92, 29, 111),
     Color.fromARGB(255, 280, 20, 81)
   ];
 

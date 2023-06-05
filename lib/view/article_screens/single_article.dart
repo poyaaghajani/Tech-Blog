@@ -5,7 +5,6 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/component/cached_image.dart';
 import 'package:tech_blog/component/loading_widget.dart';
 import 'package:tech_blog/component/my_colors.dart';
-import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/controller/list_article_controller.dart';
 import 'package:tech_blog/controller/single_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';

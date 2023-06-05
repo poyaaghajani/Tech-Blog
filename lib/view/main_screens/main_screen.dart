@@ -7,7 +7,7 @@ import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/utils/devise_size.dart';
 import 'package:tech_blog/view/main_screens/home_screen.dart';
-import 'package:tech_blog/view/main_screens/profile_screen.dart';
+import 'package:tech_blog/view/register_screens/register_intro.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
@@ -110,7 +110,7 @@ class MainScreen extends StatelessWidget {
                 index: selektedScreenIndex.value,
                 children: [
                   HomeScreen(textTheme: textTheme, bodyMargin: bodyMargin),
-                  ProfileScreen(textTheme: textTheme, bodyMargin: bodyMargin)
+                  RegisterIntro()
                 ],
               ),
             ),
