@@ -7,10 +7,12 @@ import 'package:tech_blog/component/loading_widget.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/controller/home_screen_controller.dart';
+import 'package:tech_blog/controller/single_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/data_models.dart';
 import 'package:tech_blog/utils/default_physics.dart';
 import 'package:tech_blog/utils/devise_size.dart';
+import 'package:tech_blog/view/article_list.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({
@@ -22,6 +24,7 @@ class HomeScreen extends StatelessWidget {
   final TextTheme textTheme;
   final double bodyMargin;
   final homeScreenController = Get.put(HomeScreenController());
+  final singleArticleController = Get.put(SingleArticleController());
 
   @override
   Widget build(BuildContext context) {
@@ -44,17 +47,22 @@ class HomeScreen extends StatelessWidget {
 
                   SizedBox(height: DeviseSize.getHeight(context) / 12),
 
-                  Padding(
-                    padding: EdgeInsets.only(right: bodyMargin),
-                    child: Row(
-                      children: [
-                        Assets.icons.bluePen.image(height: 20),
-                        const SizedBox(width: 8),
-                        Text(
-                          MySctrings.viewHotestBlog,
-                          style: textTheme.displaySmall,
-                        ),
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(ArticleListScreen());
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(right: bodyMargin),
+                      child: Row(
+                        children: [
+                          Assets.icons.bluePen.image(height: 20),
+                          const SizedBox(width: 8),
+                          Text(
+                            MySctrings.viewHotestBlog,
+                            style: textTheme.displaySmall,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
 
@@ -100,60 +108,68 @@ class HomeScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                SizedBox(
-                  width: Get.width / 2.4,
-                  height: Get.height / 5.3,
-                  child: Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      Container(
-                        height: DeviseSize.getHeight(context) / 5.3,
-                        margin: const EdgeInsets.only(left: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        foregroundDecoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          gradient: const LinearGradient(
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
-                            colors: GradientColors.blogPost,
+                GestureDetector(
+                  onTap: () {
+                    singleArticleController.getArticleInfo(
+                        homeScreenController.topVisitedList[index].id);
+                  },
+                  child: SizedBox(
+                    width: Get.width / 2.4,
+                    height: Get.height / 5.3,
+                    child: Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Container(
+                          height: DeviseSize.getHeight(context) / 5.3,
+                          margin: const EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          foregroundDecoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            gradient: const LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                              colors: GradientColors.blogPost,
+                            ),
+                          ),
+                          child: CachedImage(
+                            imageUrl: homeScreenController
+                                .topVisitedList[index].image,
+                            radius: 16,
                           ),
                         ),
-                        child: CachedImage(
-                          imageUrl:
-                              homeScreenController.topVisitedList[index].image,
-                          radius: 16,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                homeScreenController
+                                    .topVisitedList[index].author,
+                                style: textTheme.titleMedium,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    homeScreenController
+                                        .topVisitedList[index].view,
+                                    style: textTheme.titleMedium,
+                                  ),
+                                  SizedBox(
+                                      width:
+                                          DeviseSize.getWidth(context) / 100),
+                                  const Icon(
+                                    Icons.remove_red_eye_sharp,
+                                    color: Colors.white,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              homeScreenController.topVisitedList[index].author,
-                              style: textTheme.titleMedium,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  homeScreenController
-                                      .topVisitedList[index].view,
-                                  style: textTheme.titleMedium,
-                                ),
-                                SizedBox(
-                                    width: DeviseSize.getWidth(context) / 100),
-                                const Icon(
-                                  Icons.remove_red_eye_sharp,
-                                  color: Colors.white,
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Padding(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/component/my_colors.dart';
 
 PreferredSize myAppBar(TextTheme textTheme, String title) {
@@ -18,14 +19,19 @@ PreferredSize myAppBar(TextTheme textTheme, String title) {
             ),
           ),
         ],
-        leading: Container(
-          height: 40,
-          width: 40,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: SolidColors.primaryColor.withOpacity(0.7),
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: SolidColors.primaryColor.withOpacity(0.7),
+            ),
+            child: const Icon(Icons.keyboard_arrow_right),
           ),
-          child: const Icon(Icons.keyboard_arrow_right),
         ),
       ),
     ),

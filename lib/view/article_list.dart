@@ -5,7 +5,6 @@ import 'package:tech_blog/component/my_app_bar.dart';
 import 'package:tech_blog/controller/list_article_controller.dart';
 import 'package:tech_blog/controller/single_article_controller.dart';
 import 'package:tech_blog/utils/devise_size.dart';
-import 'package:tech_blog/view/single_article.dart';
 
 class ArticleListScreen extends StatelessWidget {
   ArticleListScreen({super.key, this.appBarText});
@@ -28,12 +27,9 @@ class ArticleListScreen extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: InkWell(
-                onTap: () async {
-                  await articleInfoController.getArticleInfo(
+                onTap: () {
+                  articleInfoController.getArticleInfo(
                       listArticleController.articleList[index].id);
-                  Get.to(
-                    SingleArticleScreen(),
-                  );
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,

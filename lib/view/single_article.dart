@@ -7,7 +7,6 @@ import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/controller/list_article_controller.dart';
 import 'package:tech_blog/controller/single_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/data_models.dart';
 import 'package:tech_blog/utils/default_physics.dart';
 import 'package:tech_blog/view/article_list.dart';
 
@@ -204,58 +203,65 @@ class RelatedArticles extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: Get.width / 2.4,
-                height: Get.height / 5.3,
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    Container(
-                      height: Get.height / 5.3,
-                      margin: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      foregroundDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        gradient: const LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: GradientColors.blogPost,
+              GestureDetector(
+                onTap: () {
+                  singleArticleController.getArticleInfo(
+                      singleArticleController.relatedList[index].id);
+                },
+                child: SizedBox(
+                  width: Get.width / 2.4,
+                  height: Get.height / 5.3,
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Container(
+                        height: Get.height / 5.3,
+                        margin: const EdgeInsets.only(left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        foregroundDecoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          gradient: const LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: GradientColors.blogPost,
+                          ),
+                        ),
+                        child: CachedImage(
+                          imageUrl:
+                              singleArticleController.relatedList[index].image,
+                          radius: 16,
                         ),
                       ),
-                      child: CachedImage(
-                        imageUrl:
-                            singleArticleController.relatedList[index].image,
-                        radius: 16,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              singleArticleController.relatedList[index].author,
+                              style: textTheme.titleMedium,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  singleArticleController
+                                      .relatedList[index].view,
+                                  style: textTheme.titleMedium,
+                                ),
+                                const SizedBox(width: 6),
+                                const Icon(
+                                  Icons.remove_red_eye_sharp,
+                                  color: Colors.white,
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            singleArticleController.relatedList[index].author,
-                            style: textTheme.titleMedium,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                singleArticleController.relatedList[index].view,
-                                style: textTheme.titleMedium,
-                              ),
-                              const SizedBox(width: 6),
-                              const Icon(
-                                Icons.remove_red_eye_sharp,
-                                color: Colors.white,
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 8),
