@@ -48,7 +48,7 @@ class SingleArticleScreen extends StatelessWidget {
                                 left: 0,
                                 right: 0,
                                 child: Container(
-                                  height: 90,
+                                  height: 65,
                                   decoration: const BoxDecoration(
                                     gradient: LinearGradient(
                                       begin: Alignment.bottomCenter,
@@ -61,7 +61,7 @@ class SingleArticleScreen extends StatelessWidget {
                                     padding: const EdgeInsets.only(
                                       left: 8,
                                       right: 8,
-                                      bottom: 16,
+                                      bottom: 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
@@ -116,7 +116,7 @@ class SingleArticleScreen extends StatelessWidget {
                                 Text(
                                   singleArticleController
                                       .articleInfo.value.author!,
-                                  style: textTheme.titleSmall,
+                                  style: textTheme.headlineMedium,
                                 ),
                                 const SizedBox(width: 8),
                                 Text(

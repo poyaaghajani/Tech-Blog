@@ -38,7 +38,7 @@ class MainScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        title: Assets.images.logo.image(height: Get.width / 13.6),
+        title: Assets.images.logo.image(height: Get.height / 13.6),
         actions: [
           IconButton(
             padding: const EdgeInsets.only(left: 12),

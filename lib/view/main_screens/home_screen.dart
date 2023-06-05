@@ -207,7 +207,7 @@ class HomeScreen extends StatelessWidget {
         child: ListView.builder(
           physics: defaultPhysics,
           padding: EdgeInsets.only(right: bodyMargin),
-          itemCount: homeScreenController.topPodcastList.length ~/ 2,
+          itemCount: homeScreenController.topPodcastList.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return Column(
