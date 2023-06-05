@@ -8,7 +8,7 @@ import 'package:tech_blog/utils/devise_size.dart';
 class RegisterIntro extends StatelessWidget {
   RegisterIntro({super.key});
 
-  final registerController = Get.put(RegisterController());
+  final registerController = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {

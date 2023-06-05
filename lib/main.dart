@@ -7,6 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/my_http_overrides.dart';
 import 'package:tech_blog/themes/app_theme.dart';
+import 'package:tech_blog/view/binding.dart';
 import 'package:tech_blog/view/splash_screen.dart';
 
 void main() async {
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: RegisterBinding(),
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
       locale: const Locale('fa'),

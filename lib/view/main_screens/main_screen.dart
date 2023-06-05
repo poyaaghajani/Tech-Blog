@@ -23,58 +23,7 @@ class MainScreen extends StatelessWidget {
 
     return Scaffold(
       key: key,
-      drawer: Drawer(
-        backgroundColor: SolidColors.surface,
-        child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: bodyMargin),
-          children: [
-            DrawerHeader(
-              child: Assets.images.logo.image(scale: 3),
-            ),
-            const Divider(
-              color: SolidColors.dividerColor,
-            ),
-            ListTile(
-              title: Text(
-                'پروفایل کاربری',
-                style: textTheme.headlineMedium,
-              ),
-            ),
-            const Divider(
-              color: SolidColors.dividerColor,
-            ),
-            ListTile(
-              title: Text(
-                'درباره تک بلاگ',
-                style: textTheme.headlineMedium,
-              ),
-            ),
-            const Divider(
-              color: SolidColors.dividerColor,
-            ),
-            ListTile(
-              title: Text(
-                'اشتراک گذاری تک بلاگ',
-                style: textTheme.headlineMedium,
-              ),
-              onTap: () async {
-                await Share.share(MySctrings.shareText);
-              },
-            ),
-            const Divider(
-              color: SolidColors.dividerColor,
-            ),
-            ListTile(
-                title: Text(
-                  'تک بلاگ در گیت هاب',
-                  style: textTheme.headlineMedium,
-                ),
-                onTap: () {
-                  mylaunchUrl(MySctrings.techBlogGitHubUrl);
-                }),
-          ],
-        ),
-      ),
+      drawer: TechDrawer(bodyMargin: bodyMargin, textTheme: textTheme),
       appBar: AppBar(
         backgroundColor: SolidColors.scaffoldBg,
         elevation: 0,
@@ -89,8 +38,7 @@ class MainScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        title: Assets.images.logo
-            .image(height: DeviseSize.getHeight(context) / 13.6),
+        title: Assets.images.logo.image(height: Get.width / 13.6),
         actions: [
           IconButton(
             padding: const EdgeInsets.only(left: 12),
@@ -126,8 +74,75 @@ class MainScreen extends StatelessWidget {
   }
 }
 
+class TechDrawer extends StatelessWidget {
+  const TechDrawer({
+    super.key,
+    required this.bodyMargin,
+    required this.textTheme,
+  });
+
+  final double bodyMargin;
+  final TextTheme textTheme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: SolidColors.surface,
+      child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: bodyMargin),
+        children: [
+          DrawerHeader(
+            child: Assets.images.logo.image(scale: 3),
+          ),
+          const Divider(
+            color: SolidColors.dividerColor,
+          ),
+          ListTile(
+            title: Text(
+              'پروفایل کاربری',
+              style: textTheme.headlineMedium,
+            ),
+          ),
+          const Divider(
+            color: SolidColors.dividerColor,
+          ),
+          ListTile(
+            title: Text(
+              'درباره تک بلاگ',
+              style: textTheme.headlineMedium,
+            ),
+          ),
+          const Divider(
+            color: SolidColors.dividerColor,
+          ),
+          ListTile(
+            title: Text(
+              'اشتراک گذاری تک بلاگ',
+              style: textTheme.headlineMedium,
+            ),
+            onTap: () async {
+              await Share.share(MySctrings.shareText);
+            },
+          ),
+          const Divider(
+            color: SolidColors.dividerColor,
+          ),
+          ListTile(
+              title: Text(
+                'تک بلاگ در گیت هاب',
+                style: textTheme.headlineMedium,
+              ),
+              onTap: () {
+                mylaunchUrl(MySctrings.techBlogGitHubUrl);
+              }),
+        ],
+      ),
+    );
+  }
+}
+
 class BottomNav extends StatelessWidget {
-  BottomNav({
+  const BottomNav({
     super.key,
     required this.bodyMargin,
     required this.changeScreen,
@@ -135,8 +150,6 @@ class BottomNav extends StatelessWidget {
 
   final double bodyMargin;
   final Function(int) changeScreen;
-
-  final _registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -173,7 +186,7 @@ class BottomNav extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    _registerController.toggleLogin();
+                    Get.find<RegisterController>().toggleLogin();
                   },
                   icon: Assets.icons.write.image(),
                 ),

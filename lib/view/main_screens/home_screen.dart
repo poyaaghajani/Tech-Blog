@@ -251,7 +251,8 @@ class HomeScreen extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       children: [
         Container(
-          width: DeviseSize.getWidth(context) / 1.25,
+          margin: EdgeInsets.symmetric(horizontal: bodyMargin),
+          width: Get.width,
           height: DeviseSize.getHeight(context) / 4.2,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
@@ -271,10 +272,10 @@ class HomeScreen extends StatelessWidget {
         ),
         Positioned(
           bottom: 5,
-          right: 5,
+          right: 22,
           child: SizedBox(
-            width: DeviseSize.getWidth(context) / 1.2,
-            height: 50,
+            height: Get.height / 15,
+            width: Get.width / 1.1,
             child: Text(
               homeScreenController.poster.value.title!,
               style: textTheme.displayLarge,
