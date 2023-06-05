@@ -7,6 +7,7 @@ import 'package:tech_blog/component/loading_widget.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/controller/home_screen_controller.dart';
+import 'package:tech_blog/controller/list_article_controller.dart';
 import 'package:tech_blog/controller/single_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/data_models.dart';
@@ -23,7 +24,9 @@ class HomeScreen extends StatelessWidget {
 
   final TextTheme textTheme;
   final double bodyMargin;
+
   final homeScreenController = Get.put(HomeScreenController());
+  final articleListController = Get.put(ListArticleController());
   final singleArticleController = Get.put(SingleArticleController());
 
   @override
@@ -110,8 +113,8 @@ class HomeScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    singleArticleController.getArticleInfo(
-                        homeScreenController.topVisitedList[index].id);
+                    var id = homeScreenController.topVisitedList[index].id;
+                    singleArticleController.getArticleInfo(id);
                   },
                   child: SizedBox(
                     width: Get.width / 2.4,
@@ -290,27 +293,38 @@ class HomeScreen extends StatelessWidget {
         itemCount: tagList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-            margin: const EdgeInsets.only(left: 12),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(24),
-              gradient: const LinearGradient(
-                begin: Alignment.centerRight,
-                end: Alignment.centerLeft,
-                colors: GradientColors.tags,
+          return GestureDetector(
+            onTap: () {
+              var tagId = homeScreenController.tagsList[index].id;
+              var appBarText = homeScreenController.tagsList[index].title;
+              articleListController.getArticleListWithTagsId(tagId);
+
+              Get.to(ArticleListScreen(
+                appBarText: appBarText,
+              ));
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+              margin: const EdgeInsets.only(left: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24),
+                gradient: const LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                  colors: GradientColors.tags,
+                ),
               ),
-            ),
-            child: Center(
-              child: Row(
-                children: [
-                  Assets.icons.hashtagicon.image(height: 18),
-                  SizedBox(width: DeviseSize.getWidth(context) / 60),
-                  Text(
-                    homeScreenController.tagsList[index].title,
-                    style: textTheme.displayLarge,
-                  ),
-                ],
+              child: Center(
+                child: Row(
+                  children: [
+                    Assets.icons.hashtagicon.image(height: 18),
+                    SizedBox(width: DeviseSize.getWidth(context) / 60),
+                    Text(
+                      homeScreenController.tagsList[index].title,
+                      style: textTheme.displayLarge,
+                    ),
+                  ],
+                ),
               ),
             ),
           );

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/component/cached_image.dart';
 import 'package:tech_blog/component/loading_widget.dart';
 import 'package:tech_blog/component/my_colors.dart';
+import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/controller/list_article_controller.dart';
 import 'package:tech_blog/controller/single_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
@@ -14,6 +16,7 @@ class SingleArticleScreen extends StatelessWidget {
   SingleArticleScreen({super.key});
 
   final singleArticleController = Get.find<SingleArticleController>();
+  final articleListController = Get.put(ListArticleController());
 
   @override
   Widget build(BuildContext context) {
@@ -77,9 +80,16 @@ class SingleArticleScreen extends StatelessWidget {
                                           color: SolidColors.lightIcon,
                                         ),
                                         const SizedBox(width: 14),
-                                        const Icon(
-                                          Icons.share,
-                                          color: SolidColors.lightIcon,
+                                        GestureDetector(
+                                          onTap: () async {
+                                            await Share.share(
+                                                singleArticleController
+                                                    .articleInfo.value.title!);
+                                          },
+                                          child: const Icon(
+                                            Icons.share,
+                                            color: SolidColors.lightIcon,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -142,7 +152,7 @@ class SingleArticleScreen extends StatelessWidget {
                                           .tagList[index].id;
                                       var appBarText = singleArticleController
                                           .tagList[index].title;
-                                      await Get.find<ListArticleController>()
+                                      articleListController
                                           .getArticleListWithTagsId(tagId);
                                       Get.to(ArticleListScreen(
                                         appBarText: appBarText,
