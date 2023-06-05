@@ -6,17 +6,11 @@ import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/utils/devise_size.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({
-    super.key,
-    required this.textTheme,
-    required this.bodyMargin,
-  });
-
-  final TextTheme textTheme;
-  final double bodyMargin;
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

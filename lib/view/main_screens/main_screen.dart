@@ -4,10 +4,10 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/component/lunch_url.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/my_strings.dart';
+import 'package:tech_blog/controller/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/utils/devise_size.dart';
 import 'package:tech_blog/view/main_screens/home_screen.dart';
-import 'package:tech_blog/view/register_screens/register_intro.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
@@ -18,7 +18,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> key = GlobalKey();
 
-    var bodyMargin = DeviseSize.getWidth(context) / 11;
+    var bodyMargin = DeviseSize.getWidth(context) / 28;
     var textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
@@ -79,7 +79,7 @@ class MainScreen extends StatelessWidget {
         backgroundColor: SolidColors.scaffoldBg,
         elevation: 0,
         leading: IconButton(
-          padding: const EdgeInsets.only(right: 8),
+          padding: const EdgeInsets.only(right: 12),
           onPressed: () {
             key.currentState!.openDrawer();
           },
@@ -93,7 +93,7 @@ class MainScreen extends StatelessWidget {
             .image(height: DeviseSize.getHeight(context) / 13.6),
         actions: [
           IconButton(
-            padding: const EdgeInsets.only(left: 8),
+            padding: const EdgeInsets.only(left: 12),
             onPressed: () {},
             icon: const Icon(
               Icons.search,
@@ -110,7 +110,6 @@ class MainScreen extends StatelessWidget {
                 index: selektedScreenIndex.value,
                 children: [
                   HomeScreen(textTheme: textTheme, bodyMargin: bodyMargin),
-                  RegisterIntro()
                 ],
               ),
             ),
@@ -128,7 +127,7 @@ class MainScreen extends StatelessWidget {
 }
 
 class BottomNav extends StatelessWidget {
-  const BottomNav({
+  BottomNav({
     super.key,
     required this.bodyMargin,
     required this.changeScreen,
@@ -136,6 +135,8 @@ class BottomNav extends StatelessWidget {
 
   final double bodyMargin;
   final Function(int) changeScreen;
+
+  final _registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +154,7 @@ class BottomNav extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: bodyMargin / 2),
+          padding: EdgeInsets.symmetric(horizontal: bodyMargin + 14),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
@@ -172,7 +173,7 @@ class BottomNav extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    changeScreen(1);
+                    _registerController.toggleLogin();
                   },
                   icon: Assets.icons.write.image(),
                 ),

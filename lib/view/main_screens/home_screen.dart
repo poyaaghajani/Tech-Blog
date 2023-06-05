@@ -26,12 +26,13 @@ class HomeScreen extends StatelessWidget {
   final double bodyMargin;
 
   final homeScreenController = Get.put(HomeScreenController());
+
   final articleListController = Get.put(ListArticleController());
+
   final singleArticleController = Get.put(SingleArticleController());
 
   @override
   Widget build(BuildContext context) {
-    homeScreenController.getHomeItems();
     return Obx(
       () => SingleChildScrollView(
         physics: defaultPhysics,
