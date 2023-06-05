@@ -6,7 +6,14 @@ import 'package:tech_blog/component/my_colors.dart';
 class CachedImage extends StatelessWidget {
   final String? imageUrl;
   final double? radius;
-  const CachedImage({super.key, this.imageUrl, this.radius = 0});
+  final BoxFit? fit;
+
+  const CachedImage({
+    super.key,
+    this.imageUrl,
+    this.radius = 0,
+    this.fit = BoxFit.cover,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +21,7 @@ class CachedImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(radius!),
       child: CachedNetworkImage(
         imageUrl: imageUrl ?? '',
-        fit: BoxFit.cover,
+        fit: fit ?? BoxFit.cover,
         placeholder: (context, url) {
           return const SpinKitCircle(
             color: SolidColors.primaryColor,

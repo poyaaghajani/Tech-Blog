@@ -30,7 +30,7 @@ class ArticleModel {
       image: ApiUrl.hostDlUrl + json['image'],
       catId: json['cat_id'],
       catname: json['cat_name'],
-      author: json['author'],
+      author: json['author'] ?? 'نامشخص',
       view: json['view'],
       // isFavorite: json['isFavorite'],
       createdAt: json['created_at'],

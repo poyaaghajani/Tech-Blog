@@ -101,8 +101,8 @@ class HomeScreen extends StatelessWidget {
             return Column(
               children: [
                 SizedBox(
-                  width: DeviseSize.getWidth(context) / 2.4,
-                  height: DeviseSize.getHeight(context) / 5.3,
+                  width: Get.width / 2.4,
+                  height: Get.height / 5.3,
                   child: Stack(
                     alignment: Alignment.bottomCenter,
                     children: [

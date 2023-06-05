@@ -75,6 +75,11 @@ class AppTheme {
         fontSize: 13,
         fontWeight: FontWeight.w300,
       ),
+      bodyMedium: TextStyle(
+          fontFamily: 'dana',
+          fontSize: 14,
+          color: Color.fromARGB(255, 70, 70, 70),
+          fontWeight: FontWeight.w700),
       displayMedium: TextStyle(
         fontFamily: 'dana',
         fontSize: 14,
