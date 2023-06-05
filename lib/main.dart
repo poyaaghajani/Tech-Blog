@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/themes/app_theme.dart';
-import 'package:tech_blog/view/article_list.dart';
+import 'package:tech_blog/view/article_screens/article_list.dart';
 import 'package:tech_blog/view/splash_screen.dart';
 
 void main() {

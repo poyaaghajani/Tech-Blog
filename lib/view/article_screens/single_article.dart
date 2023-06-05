@@ -10,7 +10,7 @@ import 'package:tech_blog/controller/list_article_controller.dart';
 import 'package:tech_blog/controller/single_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/utils/default_physics.dart';
-import 'package:tech_blog/view/article_list.dart';
+import 'package:tech_blog/view/article_screens/article_list.dart';
 
 class SingleArticleScreen extends StatelessWidget {
   SingleArticleScreen({super.key});

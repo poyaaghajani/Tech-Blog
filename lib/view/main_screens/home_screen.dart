@@ -13,7 +13,7 @@ import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/data_models.dart';
 import 'package:tech_blog/utils/default_physics.dart';
 import 'package:tech_blog/utils/devise_size.dart';
-import 'package:tech_blog/view/article_list.dart';
+import 'package:tech_blog/view/article_screens/article_list.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({
