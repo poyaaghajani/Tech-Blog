@@ -118,13 +118,13 @@ class HomeScreen extends StatelessWidget {
                     singleArticleController.getArticleInfo(id);
                   },
                   child: SizedBox(
-                    width: Get.width / 2.4,
+                    width: Get.width / 2.2,
                     height: Get.height / 5.3,
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
                         Container(
-                          height: DeviseSize.getHeight(context) / 5.3,
+                          height: Get.height / 5.3,
                           margin: const EdgeInsets.only(left: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
@@ -212,9 +212,10 @@ class HomeScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                SizedBox(
-                  width: DeviseSize.getWidth(context) / 2.4,
-                  height: DeviseSize.getHeight(context) / 5.3,
+                Container(
+                  width: Get.width / 2.2,
+                  height: Get.height / 5.3,
+                  margin: const EdgeInsets.only(left: 10),
                   child: homeScreenController.topPodcastList[index].poster ==
                           "https://techblog.sasansafari.com''"
                       ? const Icon(

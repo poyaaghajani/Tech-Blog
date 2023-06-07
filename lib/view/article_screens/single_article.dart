@@ -218,7 +218,7 @@ class RelatedArticles extends StatelessWidget {
                       singleArticleController.relatedList[index].id);
                 },
                 child: SizedBox(
-                  width: Get.width / 2.4,
+                  width: Get.width / 2.2,
                   height: Get.height / 5.3,
                   child: Stack(
                     alignment: Alignment.bottomCenter,
