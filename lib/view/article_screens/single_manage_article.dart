@@ -131,7 +131,11 @@ class SingleManageArticle extends StatelessWidget {
                         ),
 
                         Padding(
-                          padding: EdgeInsets.all(bodyMargin),
+                          padding: EdgeInsets.only(
+                            right: bodyMargin,
+                            top: 8,
+                            bottom: 30,
+                          ),
                           child: Text(
                             manageArticleController
                                 .articleInfoModel.value.title!,
@@ -149,7 +153,11 @@ class SingleManageArticle extends StatelessWidget {
                         ),
 
                         Padding(
-                          padding: EdgeInsets.all(bodyMargin),
+                          padding: EdgeInsets.only(
+                            right: bodyMargin,
+                            top: 8,
+                            bottom: 30,
+                          ),
                           child: Html(
                             data: manageArticleController
                                 .articleInfoModel.value.content,
@@ -163,12 +171,31 @@ class SingleManageArticle extends StatelessWidget {
                         ),
 
                         Padding(
-                          padding: EdgeInsets.all(bodyMargin),
+                          padding: EdgeInsets.only(
+                            right: bodyMargin,
+                            top: 8,
+                            bottom: 30,
+                          ),
                           child: Text(
                             manageArticleController
                                     .articleInfoModel.value.catName ??
                                 'هیچ دسته بندی انتخاب نشده',
                             style: textTheme.headlineSmall,
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6),
+                          child: Center(
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                await manageArticleController.storeArticle();
+                              },
+                              child: Text(
+                                  manageArticleController.articleLoading.value
+                                      ? 'در حال ارسال...'
+                                      : 'ارسال مطلب'),
+                            ),
                           ),
                         ),
                       ],
