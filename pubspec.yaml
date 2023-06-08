@@ -43,6 +43,7 @@ dependencies:
   flutter_html:
   get_storage: ^2.1.1
   file_picker: ^5.0.0
+  html_editor_enhanced: ^2.5.1
 
 
 dev_dependencies:

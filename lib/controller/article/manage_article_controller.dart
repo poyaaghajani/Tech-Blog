@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/component/api_url.dart';
 import 'package:tech_blog/models/article_info_model.dart';
@@ -7,9 +8,10 @@ import 'package:tech_blog/services/dio_service.dart';
 
 class ManageArticleController extends GetxController {
   RxList<ArticleModel> articleList = RxList.empty();
+  TextEditingController titleController = TextEditingController();
   Rx<ArticleInfoModel> articleInfoModel = ArticleInfoModel(
     'اینجا عنوان مقاله قرار میگیره،یه عنوان جذاب انتخاب کن',
-    'اینجا محتوای مقاله قرا ستستس ست ییتیت0 ش0یخس ی سخیسخت  تخیتستس خ تخست ختی تی ختس یس خ ت ر میگیره',
+    'اینجا محتوای مقاله قرار میگیره',
     '',
   ).obs;
   RxList<TagModel> tagList = RxList.empty();
@@ -38,5 +40,11 @@ class ManageArticleController extends GetxController {
 
       loading.value = false;
     }
+  }
+
+  updateTitle() {
+    articleInfoModel.update((val) {
+      val!.title = titleController.text;
+    });
   }
 }

@@ -186,7 +186,7 @@ class BottomNav extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    Get.find<RegisterController>().toggleLogin();
+                    Get.put(RegisterController()).toggleLogin();
                   },
                   icon: Assets.icons.write.image(),
                 ),

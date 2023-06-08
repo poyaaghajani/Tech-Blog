@@ -11,20 +11,17 @@ class SeeMoreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var bodyMargin = Get.width / 28;
     var textTheme = Theme.of(context).textTheme;
-    return GestureDetector(
-      onTap: () {},
-      child: Padding(
-        padding: EdgeInsets.only(right: bodyMargin),
-        child: Row(
-          children: [
-            Assets.icons.bluePen.image(height: 20),
-            const SizedBox(width: 8),
-            Text(
-              text,
-              style: textTheme.displaySmall,
-            ),
-          ],
-        ),
+    return Padding(
+      padding: EdgeInsets.only(right: bodyMargin),
+      child: Row(
+        children: [
+          Assets.icons.bluePen.image(height: 20),
+          const SizedBox(width: 8),
+          Text(
+            text,
+            style: textTheme.displaySmall,
+          ),
+        ],
       ),
     );
   }

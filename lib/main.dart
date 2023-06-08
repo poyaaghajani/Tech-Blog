@@ -11,7 +11,6 @@ import 'package:tech_blog/view/article_screens/single_article.dart';
 import 'package:tech_blog/view/article_screens/single_manage_article.dart';
 import 'package:tech_blog/view/binding.dart';
 import 'package:tech_blog/view/main_screens/main_screen.dart';
-import 'package:tech_blog/view/splash_screen.dart';
 
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home: MainScreen(),
       locale: const Locale('fa'),
       theme: AppTheme.lightTheme,
       getPages: [
