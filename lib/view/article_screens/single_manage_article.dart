@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
@@ -5,12 +7,15 @@ import 'package:tech_blog/component/loading_widget.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/see_more_widget.dart';
 import 'package:tech_blog/controller/article/manage_article_controller.dart';
+import 'package:tech_blog/controller/file_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/services/pick_file.dart';
 
 class SingleManageArticle extends StatelessWidget {
   SingleManageArticle({super.key});
 
   final manageArticleController = Get.find<ManageArticleController>();
+  final fileController = Get.put(FileController());
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +36,16 @@ class SingleManageArticle extends StatelessWidget {
                         Stack(
                           alignment: Alignment.bottomCenter,
                           children: [
-                            SizedBox(
-                              height: Get.height / 3,
-                              width: Get.width,
-                              child: Assets.images.singlePlaceHolder
-                                  .image(fit: BoxFit.fill),
-                            ),
+                            fileController.file.value.name == 'any'
+                                ? SizedBox(
+                                    height: Get.height / 3,
+                                    width: Get.width,
+                                    child: Assets.images.singlePlaceHolder
+                                        .image(fit: BoxFit.fill),
+                                  )
+                                : Image.file(
+                                    File(fileController.file.value.path!),
+                                  ),
                             Positioned(
                               top: 0,
                               left: 0,
@@ -73,7 +82,9 @@ class SingleManageArticle extends StatelessWidget {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () async {
+                                await pickFiles();
+                              },
                               child: Container(
                                 decoration: const BoxDecoration(
                                   color: SolidColors.primaryColor,
