@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/component/cached_image.dart';
 import 'package:tech_blog/component/my_app_bar.dart';
-import 'package:tech_blog/controller/list_article_controller.dart';
-import 'package:tech_blog/controller/single_article_controller.dart';
+import 'package:tech_blog/controller/article/list_article_controller.dart';
+import 'package:tech_blog/controller/article/single_article_controller.dart';
 import 'package:tech_blog/utils/devise_size.dart';
 
 class ArticleListScreen extends StatelessWidget {
@@ -56,7 +56,8 @@ class ArticleListScreen extends StatelessWidget {
                         SizedBox(
                           width: DeviseSize.getWidth(context) / 2,
                           child: Text(
-                            listArticleController.articleList[index].title,
+                            listArticleController.articleList[index].title ??
+                                '',
                             maxLines: 2,
                           ),
                         ),
@@ -65,7 +66,9 @@ class ArticleListScreen extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                listArticleController.articleList[index].author,
+                                listArticleController
+                                        .articleList[index].author ??
+                                    '',
                                 style: textTheme.bodySmall,
                               ),
                               const SizedBox(width: 10),
@@ -74,7 +77,8 @@ class ArticleListScreen extends StatelessWidget {
                                 style: textTheme.bodySmall,
                               ),
                               Text(
-                                listArticleController.articleList[index].view,
+                                listArticleController.articleList[index].view ??
+                                    '200',
                                 style: textTheme.bodySmall,
                               ),
                             ],

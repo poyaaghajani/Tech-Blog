@@ -9,7 +9,7 @@ import 'package:tech_blog/services/dio_service.dart';
 class SingleArticleController extends GetxController {
   RxBool loading = false.obs;
   RxInt id = RxInt(0);
-  Rx<ArticleInfoModel> articleInfo = ArticleInfoModel().obs;
+  Rx<ArticleInfoModel> articleInfo = ArticleInfoModel(null, null, null).obs;
   RxList<TagModel> tagList = RxList();
   RxList<ArticleModel> relatedList = RxList();
 
@@ -35,6 +35,6 @@ class SingleArticleController extends GetxController {
       relatedList.add(ArticleModel.fromJson(element));
     });
 
-    Get.toNamed(routeSingleArticle);
+    Get.toNamed(NamedRoute.routeSingleArticle);
   }
 }

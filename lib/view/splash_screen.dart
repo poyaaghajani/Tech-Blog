@@ -48,6 +48,6 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 4),
     );
 
-    Get.offAndToNamed(routeMainScreen);
+    Get.offAndToNamed(NamedRoute.routeMainScreen);
   }
 }

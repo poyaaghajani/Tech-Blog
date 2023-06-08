@@ -18,7 +18,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> key = GlobalKey();
 
-    var bodyMargin = DeviseSize.getWidth(context) / 28;
+    var bodyMargin = Get.width / 28;
     var textTheme = Theme.of(context).textTheme;
 
     return Scaffold(

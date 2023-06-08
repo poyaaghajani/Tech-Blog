@@ -5,8 +5,8 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/component/cached_image.dart';
 import 'package:tech_blog/component/loading_widget.dart';
 import 'package:tech_blog/component/my_colors.dart';
-import 'package:tech_blog/controller/list_article_controller.dart';
-import 'package:tech_blog/controller/single_article_controller.dart';
+import 'package:tech_blog/controller/article/list_article_controller.dart';
+import 'package:tech_blog/controller/article/single_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/utils/default_physics.dart';
 import 'package:tech_blog/view/article_screens/article_list.dart';
@@ -249,14 +249,17 @@ class RelatedArticles extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              singleArticleController.relatedList[index].author,
+                              singleArticleController
+                                      .relatedList[index].author ??
+                                  '',
                               style: textTheme.titleMedium,
                             ),
                             Row(
                               children: [
                                 Text(
                                   singleArticleController
-                                      .relatedList[index].view,
+                                          .relatedList[index].view ??
+                                      '200',
                                   style: textTheme.titleMedium,
                                 ),
                                 const SizedBox(width: 6),
@@ -278,7 +281,7 @@ class RelatedArticles extends StatelessWidget {
                 child: SizedBox(
                   width: Get.width / 2.5,
                   child: Text(
-                    singleArticleController.relatedList[index].title,
+                    singleArticleController.relatedList[index].title ?? '',
                     maxLines: 2,
                     style: textTheme.bodyMedium,
                   ),

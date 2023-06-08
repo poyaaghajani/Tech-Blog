@@ -1,26 +1,28 @@
 import 'package:tech_blog/component/api_url.dart';
 
 class ArticleModel {
-  String id;
-  String title;
-  String image;
-  String catId;
-  String catname;
-  String author;
-  String view;
+  String? id;
+  String? title;
+  String? image;
+  String? catId;
+  String? catname;
+  String? author;
+  String? view;
+  String? status;
   // bool? isFavorite;
-  String createdAt;
+  String? createdAt;
 
   ArticleModel({
-    required this.id,
-    required this.title,
-    required this.image,
-    required this.catId,
-    required this.catname,
-    required this.author,
-    required this.view,
+    this.id,
+    this.title,
+    this.image,
+    this.catId,
+    this.catname,
+    this.author,
+    this.view,
+    this.status,
     // this.isFavorite,
-    required this.createdAt,
+    this.createdAt,
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
@@ -32,6 +34,7 @@ class ArticleModel {
       catname: json['cat_name'],
       author: json['author'] ?? 'نامشخص',
       view: json['view'],
+      status: json['status'],
       // isFavorite: json['isFavorite'],
       createdAt: json['created_at'],
     );

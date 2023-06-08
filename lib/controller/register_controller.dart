@@ -5,6 +5,7 @@ import 'package:tech_blog/component/api_url.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/storage_const.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/main.dart';
 import 'package:tech_blog/services/dio_service.dart';
 import 'package:tech_blog/view/main_screens/main_screen.dart';
 import 'package:tech_blog/view/register_screens/register_intro.dart';
@@ -43,11 +44,11 @@ class RegisterController extends GetxController {
     switch (status) {
       case 'verified':
         var box = GetStorage();
-        box.write(token, response.data['token']);
-        box.write(userId, response.data['user_id']);
+        box.write(StorageConst.token, response.data['token']);
+        box.write(StorageConst.userId, response.data['user_id']);
 
-        debugPrint('read::: ${box.read(token)}');
-        debugPrint('read::: ${box.read(response.data['user_id'])}');
+        debugPrint('read::: ${box.read(StorageConst.token)}');
+        debugPrint('read::: ${box.read(StorageConst.userId)}');
 
         Get.offAll(MainScreen());
 
@@ -64,7 +65,7 @@ class RegisterController extends GetxController {
   }
 
   toggleLogin() {
-    if (GetStorage().read(token) == null) {
+    if (GetStorage().read(StorageConst.token) == null) {
       Get.to(RegisterIntro());
     } else {
       routeToArticleBottomSheet();
@@ -110,7 +111,9 @@ class RegisterController extends GetxController {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(NamedRoute.manageArticle);
+                    },
                     child: SizedBox(
                       height: 65,
                       child: Row(

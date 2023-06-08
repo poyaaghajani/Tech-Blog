@@ -7,8 +7,8 @@ import 'package:tech_blog/component/loading_widget.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/controller/home_screen_controller.dart';
-import 'package:tech_blog/controller/list_article_controller.dart';
-import 'package:tech_blog/controller/single_article_controller.dart';
+import 'package:tech_blog/controller/article/list_article_controller.dart';
+import 'package:tech_blog/controller/article/single_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/data_models.dart';
 import 'package:tech_blog/utils/default_physics.dart';
@@ -150,14 +150,16 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Text(
                                 homeScreenController
-                                    .topVisitedList[index].author,
+                                        .topVisitedList[index].author ??
+                                    '',
                                 style: textTheme.titleMedium,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     homeScreenController
-                                        .topVisitedList[index].view,
+                                            .topVisitedList[index].view ??
+                                        '',
                                     style: textTheme.titleMedium,
                                   ),
                                   SizedBox(
@@ -181,7 +183,7 @@ class HomeScreen extends StatelessWidget {
                   child: SizedBox(
                     width: DeviseSize.getWidth(context) / 2.4,
                     child: Text(
-                      homeScreenController.topVisitedList[index].title,
+                      homeScreenController.topVisitedList[index].title ?? '',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
