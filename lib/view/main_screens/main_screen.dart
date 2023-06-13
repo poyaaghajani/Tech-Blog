@@ -6,7 +6,6 @@ import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/controller/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/utils/devise_size.dart';
 import 'package:tech_blog/view/main_screens/home_screen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -158,7 +157,7 @@ class BottomNav extends StatelessWidget {
       right: 0,
       left: 0,
       child: Container(
-        height: DeviseSize.getHeight(context) / 11,
+        height: Get.height / 11,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: GradientColors.bottomNavBackground,

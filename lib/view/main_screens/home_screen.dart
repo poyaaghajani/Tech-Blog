@@ -10,6 +10,7 @@ import 'package:tech_blog/controller/home_screen_controller.dart';
 import 'package:tech_blog/controller/article/list_article_controller.dart';
 import 'package:tech_blog/controller/article/single_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/main.dart';
 import 'package:tech_blog/models/data_models.dart';
 import 'package:tech_blog/utils/default_physics.dart';
 import 'package:tech_blog/utils/devise_size.dart';
@@ -214,22 +215,30 @@ class HomeScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                Container(
-                  width: Get.width / 2.2,
-                  height: Get.height / 5.3,
-                  margin: const EdgeInsets.only(left: 10),
-                  child: homeScreenController.topPodcastList[index].poster ==
-                          "https://techblog.sasansafari.com''"
-                      ? const Icon(
-                          Icons.image_not_supported_outlined,
-                          size: 40,
-                          color: SolidColors.primaryColor,
-                        )
-                      : CachedImage(
-                          imageUrl:
-                              homeScreenController.topPodcastList[index].poster,
-                          radius: 16,
-                        ),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(
+                      NamedRoute.singlePodcast,
+                      arguments: homeScreenController.topPodcastList[index],
+                    );
+                  },
+                  child: Container(
+                    width: Get.width / 2.2,
+                    height: Get.height / 5.3,
+                    margin: const EdgeInsets.only(left: 10),
+                    child: homeScreenController.topPodcastList[index].poster ==
+                            "https://techblog.sasansafari.com''"
+                        ? const Icon(
+                            Icons.image_not_supported_outlined,
+                            size: 40,
+                            color: SolidColors.primaryColor,
+                          )
+                        : CachedImage(
+                            imageUrl: homeScreenController
+                                .topPodcastList[index].poster,
+                            radius: 16,
+                          ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10, top: 4),
