@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:tech_blog/component/api_url.dart';
-import 'package:tech_blog/main.dart';
 import 'package:tech_blog/models/article_info_model.dart';
 import 'package:tech_blog/models/article_model.dart';
 import 'package:tech_blog/models/tag_model.dart';
+import 'package:tech_blog/route/names.dart';
 import 'package:tech_blog/services/dio_service.dart';
 
 class SingleArticleController extends GetxController {

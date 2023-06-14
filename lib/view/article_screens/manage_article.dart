@@ -7,7 +7,7 @@ import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/my_strings.dart';
 import 'package:tech_blog/controller/article/manage_article_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/main.dart';
+import 'package:tech_blog/route/names.dart';
 import 'package:tech_blog/utils/devise_size.dart';
 
 class ManageArticle extends StatelessWidget {

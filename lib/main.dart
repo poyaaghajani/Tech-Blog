@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/my_http_overrides.dart';
+import 'package:tech_blog/route/names.dart';
 import 'package:tech_blog/route/pages.dart';
 import 'package:tech_blog/themes/app_theme.dart';
-import 'package:tech_blog/view/splash_screen.dart';
 
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
@@ -37,14 +37,4 @@ class MyApp extends StatelessWidget {
       getPages: Pages.pages,
     );
   }
-}
-
-class NamedRoute {
-  NamedRoute._();
-  static String routeInitial = '/';
-  static String routeMainScreen = '/main_screen';
-  static String routeSingleArticle = '/single_article';
-  static String manageArticle = '/manage_article';
-  static String singleManageArticle = '/single_manage_article';
-  static String singlePodcast = '/single_podcast';
 }

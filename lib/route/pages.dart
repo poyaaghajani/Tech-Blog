@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:tech_blog/main.dart';
+import 'package:tech_blog/route/names.dart';
 import 'package:tech_blog/view/article_screens/manage_article.dart';
 import 'package:tech_blog/view/article_screens/single_article.dart';
 import 'package:tech_blog/view/article_screens/single_manage_article.dart';

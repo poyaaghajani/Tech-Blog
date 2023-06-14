@@ -5,7 +5,7 @@ import 'package:tech_blog/component/api_url.dart';
 import 'package:tech_blog/component/my_colors.dart';
 import 'package:tech_blog/component/storage_const.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/main.dart';
+import 'package:tech_blog/route/names.dart';
 import 'package:tech_blog/services/dio_service.dart';
 import 'package:tech_blog/view/main_screens/main_screen.dart';
 import 'package:tech_blog/view/register_screens/register_intro.dart';

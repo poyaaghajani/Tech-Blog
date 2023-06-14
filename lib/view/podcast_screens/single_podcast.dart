@@ -8,6 +8,7 @@ import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/podcast_model.dart';
 import 'package:tech_blog/utils/default_physics.dart';
 
+// ignore: must_be_immutable
 class SinglePodcast extends StatelessWidget {
   late SinglePodcastController controller;
   late PodcastModel podcastModel;
